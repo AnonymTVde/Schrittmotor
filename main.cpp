@@ -37,6 +37,10 @@ void init()
 {
     state = 0;
     richtung = RECHTS;
+    A.write(Bestromung_rechts[state][0]);
+    a.write(Bestromung_rechts[state][1]);
+    B.write(Bestromung_rechts[state][2]);
+    b.write(Bestromung_rechts[state][3]);
 }
 
 void init_TIM6()
@@ -94,22 +98,22 @@ void start_TIM6()
 
 void schritt_rechts()
 {
+    state++;
+    state %= 4;
     A.write(Bestromung_rechts[state][0]);
     a.write(Bestromung_rechts[state][1]);
     B.write(Bestromung_rechts[state][2]);
     b.write(Bestromung_rechts[state][3]);
-    state++;
-    state %= 4;
 }
 
 void schritt_links()
 {
+    state += 3;
+    state %= 4;
     A.write(Bestromung_rechts[state][0]);
     a.write(Bestromung_rechts[state][1]);
     B.write(Bestromung_rechts[state][2]);
     b.write(Bestromung_rechts[state][3]);
-    state += 7;
-    state %= 4;
 }
 
 int main()
